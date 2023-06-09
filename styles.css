@@ -339,6 +339,7 @@ template {
 }
 
 body {
+  padding: 0px;
   height: 100vh;
   width: 100vw;
   background-color: #e056fd;
@@ -351,14 +352,17 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 100%;
+  width: 100%;
+  gap: 20px;
 }
 
 h1 {
-  font-size: clamp(2rem, 6vw, 4rem) 
+  font-size: clamp(2rem, 5vw, 3.6rem) 
 }
 
 p {
-  font-size: clamp(1.1rem, 2vw, 1.8rem);
+  font-size: clamp(1.1rem, 2vw, 25.74px);
 }
 
 h1, p {
@@ -370,18 +374,20 @@ h1, p {
 
 .main {
   text-align: center;
+ 
 }
 
 .grid {
   display: grid;
-  height: clamp(300px, 70vh, 500px);
-  width: clamp(300px, 75vw, 600px);
+  height: clamp(300px, 70vh, 460px);
+  width: clamp(400px, 75vw, 600px);
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   border: 3px solid black;
   border-radius: 30px;
   border-color: white;
   box-shadow: 0px 0px 20px  rgb(255, 0, 255); /* Neon pink */  /* Neon pink */;
+  
 }
 
 .grid-item {
@@ -401,4 +407,9 @@ h1, p {
 }
 .border-4 {
   border-bottom-right-radius: 30px;
+}
+
+.restart {
+  font-size: clamp(1.1rem, 3vw, 32px);
+  border-radius: 10px;
 }

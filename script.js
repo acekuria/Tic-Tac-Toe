@@ -5,6 +5,9 @@
 
  }
 
- let players = (name, move) => {
-  di
+ let players = (name, shape) => {
+  return {
+    name,
+    shape
+  }
  }
