@@ -5,11 +5,13 @@ let gameBoardModule = (() => {
     const gridContent = document.querySelectorAll('.grid-content');
     gridContent.forEach((sqaure, index) => {
       sqaure.textContent = gameBoard[index];
-      if (sqaure.textContent === 'X') {
+      if (gameBoard[index] === 'X') {
         sqaure.classList.add('x');
+        sqaure.classList.remove('o');
       }
       else {
         sqaure.classList.add('o');
+        sqaure.classList.remove('x');
       }
     });
   };
