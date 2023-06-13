@@ -1,23 +1,49 @@
 let gameBoardModule = (() => {
-  let gameBoard = ['X','0','X','0','0','X','X','0','X'];
+  let gameBoard = ['','','','','','','','',''];
 
   let render = () => {
-    const gridBoxes = document.querySelectorAll('.grid-content');
-    gridBoxes.forEach((grid, index) => {
-      grid.textContent = gameBoard[index];
-      if (grid.textContent === 'X') {
-        grid.classList.add('x');
+    const gridContent = document.querySelectorAll('.grid-content');
+    gridContent.forEach((sqaure, index) => {
+      sqaure.textContent = gameBoard[index];
+      if (sqaure.textContent === 'X') {
+        sqaure.classList.add('x');
       }
       else {
-        grid.classList.add('o');
+        sqaure.classList.add('o');
       }
     });
   };
 
-  return {render};
+  let x = true;
+  let togglePlayer = () => x = !x;
+  
+
+  let playerAddMarks = () => {
+    const gridItems = document.querySelectorAll('.grid-item');
+    gridItems.forEach((item, index) => {
+      item.addEventListener('click', function (e) {
+        if (x === true) {
+          gameBoard[index] = 'X' ;
+          togglePlayer();
+          render();
+        }
+
+        else {
+          
+          gameBoard[index] = 'O';
+          togglePlayer();
+          render();
+        }
+        })
+    })
+    
+  };
+
+  return {playerAddMarks, gameBoard};
  })();
 
-  gameBoardModule.render()
+
+  gameBoardModule.playerAddMarks()
 
 let displayControllerModule = (function() {
   let testIf = () => console.log('Testing private function call');
