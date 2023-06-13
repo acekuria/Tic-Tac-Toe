@@ -5,7 +5,12 @@ let gameBoardModule = (() => {
     const gridBoxes = document.querySelectorAll('.grid-content');
     gridBoxes.forEach((grid, index) => {
       grid.textContent = gameBoard[index];
-      console.log('LOOP');
+      if (grid.textContent === 'X') {
+        grid.classList.add('x');
+      }
+      else {
+        grid.classList.add('o');
+      }
     });
   };
 
