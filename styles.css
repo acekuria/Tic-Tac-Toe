@@ -394,6 +394,17 @@ h1, p, .restart {
 
 .grid-item {
   border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.grid-content {
+  font-size: clamp(1rem, 9vw ,8rem);
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Poppins', sans-serif;
+
   
 }
 
