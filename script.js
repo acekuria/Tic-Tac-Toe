@@ -1,5 +1,6 @@
 let gameBoardModule = (() => {
   let gameBoard = ['','','','','','','','',''];
+  let gameOver = false;
 
   let render = () => {
     const gridContent = document.querySelectorAll('.grid-content');
@@ -23,19 +24,21 @@ let gameBoardModule = (() => {
 
   let playerAddMarks = (index) => {
 
-        if (x === true) {
+        if (x === true && gameOver === false) {
           gameBoard[index] = 'X' ;
           togglePlayer();
           render();
         }
 
-        else {
+        else if (x === false && gameOver === false){
           
           gameBoard[index] = 'O';
           togglePlayer();
           render();
         }
-        
+        else {
+          
+        }
     
   };
 
@@ -67,6 +70,7 @@ let gameBoardModule = (() => {
       if (gameBoard[a] !== '' && gameBoard[a] === gameBoard[b] && gameBoard[b] === gameBoard[c]) {
         winnerText.textContent = `Winner is Player ${gameBoard[a]}!`;
         draw = false;
+        gameOver = true;
         break;
       }
      
@@ -74,12 +78,9 @@ let gameBoardModule = (() => {
 
     if (!gameBoard.includes('') && draw===true) {
       winnerText.textContent = `Its a Draw. Yawn`;
+      gameOver = true
     }
-    
-
     }
-  
-  
  
   return {avoidSameSquare,gameBoard};
  })();
