@@ -401,7 +401,7 @@ h1, p, .restart {
 }
 
 .grid-content {
-  font-size: clamp(1rem, 9vw ,8rem);
+  font-size: clamp(2rem, 10vw ,7rem);
   font-family: 'Montserrat', sans-serif;
   font-family: 'Poppins', sans-serif;
 }
