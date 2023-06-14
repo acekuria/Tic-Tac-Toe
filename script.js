@@ -41,20 +41,7 @@ let gameBoardModule = (() => {
         }
     
   };
-
-  let avoidSameSquare = () => {
-    const gridItems = document.querySelectorAll('.grid-item');
-    gridItems.forEach((item, index) => {
-      item.addEventListener('click', function (e) {
-        if(gameBoard[index] === 'X' || gameBoard[index] === 'O' ) {
-        }
-        else {
-          playerAddMarks(index)
-          checkWinner()
-        }
-        });
-    })
-  }
+  const winnerText = document.querySelector('.winnerText')
 
   let checkWinner = function() {
     const winningCombinations = [
@@ -62,7 +49,7 @@ let gameBoardModule = (() => {
       [0, 3, 6], [1, 4, 7], [2, 5, 8], // columns
       [0, 4, 8], [2, 4, 6] // diagonals
     ];
-    const winnerText = document.querySelector('.winnerText')
+
     let draw = true;
 
     for (let combination of winningCombinations) {
@@ -81,8 +68,33 @@ let gameBoardModule = (() => {
       gameOver = true
     }
     }
- 
-  return {avoidSameSquare,gameBoard};
+
+    let avoidSameSquare = () => {
+      const gridItems = document.querySelectorAll('.grid-item');
+      gridItems.forEach((item, index) => {
+        item.addEventListener('click', function (e) {
+          if(gameBoard[index] === 'X' || gameBoard[index] === 'O' ) {
+          }
+          else {
+            playerAddMarks(index)
+            checkWinner()
+            restart()
+          }
+          });
+      })
+    }
+
+    let restart = () => {
+      let restartButton = document.querySelector('.restart');
+      restartButton.addEventListener('click', function (e) {
+        gameBoard = ['','','','','','','','',''];
+        gameOver = false;
+        render();
+        winnerText.textContent = 'Player X\'s Turn'
+
+      })
+    }
+  return {avoidSameSquare};
  })();
 
  
