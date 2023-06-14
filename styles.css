@@ -354,7 +354,7 @@ body {
   justify-content: center;
   height: 100%;
   width: 100%;
-  gap: 20px;
+  gap: 10px;
 }
 
 h1 {
@@ -376,7 +376,35 @@ h1, p, .restart {
 
 .main {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
  
+}
+
+.pickO, .pickX {
+  font-size: 4.6rem;
+}
+
+.pickX {
+  width: clamp(50px, 30vw, 100px);
+  height: clamp(50px, 20vh, 100px);
+  box-shadow: 0px 0px 10px white;
+  color:rgb(0, 0, 0);
+}
+
+.pickO{
+  width: clamp(50px, 30vw, 100px);
+  height: clamp(50px, 20vh, 100px);
+  color: white;
+  box-shadow: 0px 0px 20px black;
+}
+
+
+.playerSelection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .grid {
@@ -432,12 +460,4 @@ h1, p, .restart {
 .restart {
   font-size: clamp(1.1rem, 3vw, 32px);
   border-radius: 10px;
-}
-
-.X {
- 
-}
-
-.O {
-
 }

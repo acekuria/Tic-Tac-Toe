@@ -109,10 +109,9 @@ let displayControllerModule = (function() {
   return {testIf}
 })();
 
- let createPlayer = (name, number, shape) => { 
+
+ let createPlayer = (shape) => { 
   return {
-    name,
-    number,
     shape,
   }
  }
