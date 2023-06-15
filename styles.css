@@ -386,6 +386,10 @@ h1, p, .restart {
   font-size: 4.6rem;
 }
 
+.pickO:hover, .pickX:hover {
+  font-size: 6rem;
+}
+
 .pickX {
   width: clamp(50px, 30vw, 100px);
   height: clamp(50px, 20vh, 100px);

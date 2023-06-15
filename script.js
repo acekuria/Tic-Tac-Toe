@@ -1,3 +1,44 @@
+let playerChoice = (() => {
+ let optionX = document.querySelector('.pickX');
+ let optionO = document.querySelector('.pickO');
+ let shape = 'X';
+ let name = 'Player X';
+
+ optionX.addEventListener('click', function (e) {
+    name = 'Player X';
+    shape = 'X';
+  })
+
+  optionO.addEventListener('click', function (e) {
+    name = 'Player O';
+    shape = 'O';
+
+  })
+  return {
+    name, shape
+  }
+})();
+
+
+let createPlayer = (name, shape) => { 
+
+  let togglePlayerShape = () => {
+    return shape === 'X' ? 'O' : 'X';
+  };
+ 
+  let togglePlayerName = () => {
+    return name === 'Player X' ? 'Player O' : 'Player X';
+  };
+
+  return {
+    name,
+    shape,
+    togglePlayerShape,
+    togglePlayerName
+  
+ }}
+ 
+
 let gameBoardModule = (() => {
   let gameBoard = ['','','','','','','','',''];
   let gameOver = false;
@@ -17,31 +58,26 @@ let gameBoardModule = (() => {
       }
     });
   };
+  const winnerText = document.querySelector('.winnerText');
 
-  let x = true;
-  let togglePlayer = () => x = !x;
-  
+  let currentPlayer = createPlayer(playerChoice.name, playerChoice.shape);
 
   let playerAddMarks = (index) => {
 
-        if (x === true && gameOver === false) {
-          gameBoard[index] = 'X' ;
-          togglePlayer();
-          render();
-        }
+    if (gameOver) return;
+     
+    if (gameBoard[index] !== '') return; 
+          
+    gameBoard[index] = currentPlayer.shape;
 
-        else if (x === false && gameOver === false){
-          
-          gameBoard[index] = 'O';
-          togglePlayer();
-          render();
-        }
-        else {
-          
-        }
-    
+    render();
+    checkWinner();
+
+    currentPlayer = createPlayer(currentPlayer.togglePlayerName(), currentPlayer.togglePlayerShape());
+
+        
   };
-  const winnerText = document.querySelector('.winnerText')
+  
 
   let checkWinner = function() {
     const winningCombinations = [
@@ -51,6 +87,7 @@ let gameBoardModule = (() => {
     ];
 
     let draw = true;
+    winnerText.textContent = `${currentPlayer.name}'s Turn `
 
     for (let combination of winningCombinations) {
       const [a, b, c] = combination;
@@ -65,7 +102,7 @@ let gameBoardModule = (() => {
 
     if (!gameBoard.includes('') && draw===true) {
       winnerText.textContent = `Its a Draw. Yawn`;
-      gameOver = true
+      gameOver = true;
     }
     }
 
@@ -74,15 +111,16 @@ let gameBoardModule = (() => {
       gridItems.forEach((item, index) => {
         item.addEventListener('click', function (e) {
           if(gameBoard[index] === 'X' || gameBoard[index] === 'O' ) {
+            return;
           }
           else {
-            playerAddMarks(index)
-            checkWinner()
-            restart()
+            playerAddMarks(index);
+            checkWinner();
+            restart();
           }
           });
-      })
-    }
+      });
+    };
 
     let restart = () => {
       let restartButton = document.querySelector('.restart');
@@ -90,35 +128,14 @@ let gameBoardModule = (() => {
         gameBoard = ['','','','','','','','',''];
         gameOver = false;
         render();
-        winnerText.textContent = 'Player X\'s Turn'
+        winnerText.textContent = 'Player X\'s Turn';
 
-      })
-    }
+      });
+    };
   return {avoidSameSquare};
  })();
 
  
 
-  gameBoardModule.avoidSameSquare()
+  gameBoardModule.avoidSameSquare();
 
-
-
-
-let displayControllerModule = (function() {
-  let testIf = () => console.log('Testing private function call');
-  return {testIf}
-})();
-
-
- let createPlayer = (shape) => { 
-  return {
-    shape,
-  }
- }
-
-
-
-//  let Justin = createPlayer('Justin', 1 , 'X')
-//  let BecBec = createPlayer('BecBec', 2 , 'O')
-
-//  console.log(Justin.number)
