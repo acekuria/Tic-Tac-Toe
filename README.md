@@ -2,8 +2,6 @@
 
 Welcome to my Tic-Tac-Toe game project! This simple yet classic game is implemented in JavaScript, HTML, and CSS.
 
-![Tic-Tac-Toe Screenshot](./screenshot.png)
-
 ## Features
 
 - Play Tic-Tac-Toe against a friend locally.
